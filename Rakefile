@@ -5,5 +5,6 @@ require 'sinatra/activerecord/rake'
 
 desc 'drop into the Pry console'
 task :console do
+  ActiveRecord::Base.connection
   Pry.start
 end
