@@ -6,6 +6,7 @@ class RecipesController < ApplicationController
     end
 
     get '/recipes/new' do
+        @user = current_user
         erb :'/recipes/new'
     end
 
@@ -26,6 +27,7 @@ class RecipesController < ApplicationController
     end
 
     post '/recipes' do
+        binding.pry
         recipe = Recipe.create(params[:recipe])
         redirect "/recipes/#{recipe.id}"
     end

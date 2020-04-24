@@ -1,8 +1,18 @@
 <form method="post" action="/recipes">
-
+<h1>Create a New Recipe</h1><br>
 Name: <input type="text" name="recipe[name]" placeholder="Input Recipe Name" required autofocus><br>
-Ingredients: <input type="text" name="recipe[ingredients]" placeholder="Input Recipe Ingredients" ><br>
-Instructions: <input type="text" name="recipe[instructions]" placeholder="Input Recipe Instructions"><br>
+Ingredients: <input type="text" name="recipe[ingredients][]" placeholder="Input Recipe Ingredients" ><br>
+Instructions: <input type="text" name="recipe[instructions][]" placeholder="Input Recipe Instructions"><br>
+
+Category: <input list="types" name="recipe[category]" placeholder="Select / Create" required>
+  <datalist id="types">
+    <% @user.categories.each do |category| %>
+    <option value="<%= category.name %>">
+    <% end %>
+  </datalist>
+
+<textarea name="recipe[ingredients][]" cols="40" rows="5" placeholder="Eggs<#\r\nBeans\r\nRice\r\nPepper"></textarea>
 
 <input type="submit" value="Create Recipe">
 </form>
+
