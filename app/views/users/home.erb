@@ -2,11 +2,14 @@
 
 <a href="/sessions/logout">Log Out</a><br>
 
-<a href="/recipes">Explore Recipes</a>
+<a href="/recipes">Explore Recipes</a><br>
 
 Below are your Recipes
 
-
-
-
-
+<% @user.categories.each do |category|%>
+    <br>
+    <h1><%= category.name %></h1>
+    <% category.recipes.where(user_id: @user.id).each do |recipe| %>
+        <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a><br>
+    <% end %>
+<% end %>

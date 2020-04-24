@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
 
-
     get '/users/home' do
         @user = User.find_by_id(session[:user_id])
-        binding.pry
         erb :'/users/home'
     end
 
@@ -35,6 +33,16 @@ class UsersController < ApplicationController
         else
             redirect'/sessions/login'
         end
+    end
+
+    helpers do
+      def logged_in?
+        !!session[:user_id]
+      end
+
+      def current_user
+        User.find(session[:user_id])
+      end
     end
 
 end

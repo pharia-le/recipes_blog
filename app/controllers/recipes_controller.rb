@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
 
     get '/recipes' do
-        @recipes = Recipe.all
+        @categories = Category.all
         erb :'/recipes/index'
     end
 
