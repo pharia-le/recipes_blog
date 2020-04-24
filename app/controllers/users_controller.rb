@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
     get '/users/home' do
         @user = User.find_by_id(session[:user_id])
+        binding.pry
         erb :'/users/home'
     end
 
